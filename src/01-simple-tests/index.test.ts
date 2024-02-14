@@ -2,11 +2,14 @@
 import { simpleCalculator, Action } from './index';
 
 describe('simpleCalculator tests', () => {
+  const nums = {
+    first: 3,
+    second: 2,
+  };
+
   test('should add two numbers', () => {
-    const firstNum = 2;
-    const secondNum = 3;
-    const result = simpleCalculator({ a: firstNum, b: secondNum, action: Action.Add });
-    expect(result).toBe(firstNum + secondNum);
+    const result = simpleCalculator({ a: nums.first, b: nums.second, action: Action.Add });
+    expect(result).toBe(nums.first + nums.second);
   });
 
   test('should subtract two numbers', () => {
