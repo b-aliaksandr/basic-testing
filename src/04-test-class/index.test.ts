@@ -41,10 +41,10 @@ describe('BankAccount', () => {
   test('should deposit money', () => {
     const depositValue = 100;
     const bankAccount = getBankAccount(1000);
-    const afterDepositBalance = bankAccount.getBalance();
+    const beforeDepositBalance = bankAccount.getBalance();
     bankAccount.deposit(depositValue);
 
-    expect(bankAccount.getBalance()).toBe(afterDepositBalance + depositValue);
+    expect(bankAccount.getBalance()).toBe(beforeDepositBalance + depositValue);
   });
 
   test('should withdraw money', () => {
