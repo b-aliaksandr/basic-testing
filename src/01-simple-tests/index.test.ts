@@ -28,7 +28,8 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should exponentiate two numbers', () => {
-    // Write your test here
+    const result = simpleCalculator({ a: nums.first, b: nums.second, action: Action.Exponentiate});
+    expect(result).toBe(nums.first ** nums.second);
   });
 
   test('should return null for invalid action', () => {
