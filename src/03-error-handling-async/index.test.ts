@@ -1,9 +1,9 @@
-// Uncomment the code below and write your tests
-// import { throwError, throwCustomError, resolveValue, MyAwesomeError, rejectCustomError } from './index';
+import { resolveValue } from './index';
 
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
-    // Write your test here
+    const value = 'value';
+    await expect(resolveValue(value)).resolves.toBe(value);
   });
 });
 
