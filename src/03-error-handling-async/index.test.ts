@@ -1,4 +1,4 @@
-import { resolveValue } from './index';
+import { resolveValue, throwError, defaultErrorMsg } from './index';
 
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
@@ -9,11 +9,12 @@ describe('resolveValue', () => {
 
 describe('throwError', () => {
   test('should throw error with provided message', () => {
-    // Write your test here
+    const message = 'error message';
+    expect(() => throwError(message)).toThrow(message);
   });
 
   test('should throw error with default message if message is not provided', () => {
-    // Write your test here
+    expect(throwError).toThrow(defaultErrorMsg);
   });
 });
 
