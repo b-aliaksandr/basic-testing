@@ -1,4 +1,9 @@
-import { BankAccount, getBankAccount, InsufficientFundsError, TransferFailedError } from '.';
+import {
+  BankAccount,
+  getBankAccount,
+  InsufficientFundsError,
+  TransferFailedError,
+} from '.';
 
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
