@@ -23,7 +23,8 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should divide two numbers', () => {
-    // Write your test here
+    const result = simpleCalculator({ a: nums.first, b: nums.second, action: Action.Divide });
+    expect(result).toBe(nums.first / nums.second);
   });
 
   test('should exponentiate two numbers', () => {
