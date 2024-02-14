@@ -75,7 +75,14 @@ describe('BankAccount', () => {
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
-    // Write your tests here
+    const bankAccount = getBankAccount(1000);
+    const randomBalance = 10;
+    const randomRequestFailed = 1;
+    jest
+      .spyOn(lodash, 'random')
+      .mockReturnValueOnce(randomBalance)
+      .mockReturnValueOnce(randomRequestFailed);
+    await expect(bankAccount.fetchBalance()).resolves.toBe(randomBalance);
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
