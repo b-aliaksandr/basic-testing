@@ -2,8 +2,10 @@ import {
   BankAccount,
   getBankAccount,
   InsufficientFundsError,
+  SynchronizationFailedError,
   TransferFailedError,
 } from '.';
+import lodash from 'lodash';
 
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
@@ -96,6 +98,11 @@ describe('BankAccount', () => {
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
-    // Write your tests here
+    const bankAccount = getBankAccount(1000);
+    const fetchBalanceResolvedValue = null;
+    jest
+      .spyOn(bankAccount, 'fetchBalance')
+      .mockResolvedValue(fetchBalanceResolvedValue);
+    await expect(bankAccount.synchronizeBalance()).rejects.toThrow(SynchronizationFailedError);
   });
 });
