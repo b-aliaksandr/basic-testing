@@ -59,7 +59,19 @@ describe('BankAccount', () => {
   });
 
   test('should transfer money', () => {
-    // Write your test here
+    const bankAccount = getBankAccount(1000);
+    const beforeAccountBalance = bankAccount.getBalance();
+    const anotherBankAccount = getBankAccount(1000);
+    const beforeAnotherAccountBalance = anotherBankAccount.getBalance();
+    const withdrawAmount = beforeAccountBalance / 2;
+
+    bankAccount.transfer(withdrawAmount, anotherBankAccount);
+    expect(bankAccount.getBalance()).toBe(
+      beforeAccountBalance - withdrawAmount,
+    );
+    expect(anotherBankAccount.getBalance()).toBe(
+      beforeAnotherAccountBalance + withdrawAmount,
+    );
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
