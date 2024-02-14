@@ -37,6 +37,8 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should return null for invalid arguments', () => {
-    // Write your test here
+    const notNumericValue = '23';
+    const result = simpleCalculator({ a: notNumericValue, b: nums.second, action: Action.Divide });
+    expect(result).toBeNull();
   });
 });
