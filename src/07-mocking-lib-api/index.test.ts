@@ -26,7 +26,13 @@ describe('throttledGetDataFromApi', () => {
   });
 
   test('should perform request to correct provided url', async () => {
-    // Write your test here
+    const relativePath = '/users';
+    const spyInstanceGet = jest.spyOn(axios.Axios.prototype, 'get');
+
+    await throttledGetDataFromApi(relativePath);
+    jest.runAllTimers();
+
+    expect(spyInstanceGet).toHaveBeenCalledWith(relativePath);
   });
 
   test('should return response data', async () => {
