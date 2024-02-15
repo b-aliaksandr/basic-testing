@@ -1,5 +1,6 @@
 import { doStuffByTimeout, doStuffByInterval, readFileAsynchronously } from '.';
 import path from 'path';
+import fs from 'fs';
 
 describe('doStuffByTimeout', () => {
   beforeAll(() => {
@@ -78,7 +79,12 @@ describe('readFileAsynchronously', () => {
   });
 
   test('should return null if file does not exist', async () => {
-    // Write your test here
+    jest
+      .spyOn(fs, 'existsSync')
+      .mockReturnValue(false);
+    const pathToFile = '/index.js';
+
+    await expect(readFileAsynchronously(pathToFile)).resolves.toBeNull();
   });
 
   test('should return file content if file exists', async () => {
