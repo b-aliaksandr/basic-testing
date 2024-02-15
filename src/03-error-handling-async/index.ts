@@ -2,8 +2,9 @@ export const resolveValue = async (value: unknown) => {
   return value;
 };
 
+export const defaultErrorMsg = 'Oops!';
 export const throwError = (msg?: string) => {
-  throw new Error(msg ?? 'Oops!');
+  throw new Error(msg ?? defaultErrorMsg);
 };
 
 export const throwCustomError = () => {
