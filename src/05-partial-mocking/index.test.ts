@@ -1,4 +1,4 @@
-import { mockOne, mockTwo, mockThree } from './index';
+import { mockOne, mockTwo, mockThree, unmockedFunction } from './index';
 
 jest.mock('./index', () => {
   const originalModule =
@@ -26,6 +26,8 @@ describe('partial mocking', () => {
   });
 
   test('unmockedFunction should log into console', () => {
-    // Write your test here
+    const log = jest.spyOn(console, 'log');
+    unmockedFunction();
+    expect(log).toBeCalled();
   });
 });
