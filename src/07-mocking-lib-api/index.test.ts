@@ -36,6 +36,24 @@ describe('throttledGetDataFromApi', () => {
   });
 
   test('should return response data', async () => {
-    // Write your test here
+    const relativePath = '/users';
+    const usersData = [
+      {
+        id: 1,
+        name: 'John Diy',
+      },
+      {
+        id: 2,
+        name: 'Julia Bui',
+      },
+    ];
+    jest.spyOn(axios.Axios.prototype, 'get').mockResolvedValue({
+      data: usersData,
+    });
+
+    const responseData = await throttledGetDataFromApi(relativePath);
+    jest.runAllTimers();
+
+    expect(responseData).toBe(usersData);
   });
 });
